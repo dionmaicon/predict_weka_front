@@ -1,0 +1,49 @@
+.carousel{
+  background: #3573FF;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #110FFF;
+}
+.carousel .item{
+    margin-top: 10px;
+    min-height: 40px;
+}
+.carousel .item .texto{
+    margin:40%;
+    color: white;
+}
+.conteudo{
+  margin: 20px;
+}
+.texto{
+  font-weight: bold;
+  font-size: 18px;
+}
+.info_paciente{
+  margin-left: 2px;
+  font-size: 18px;
+}
+.res{
+  font-style: italic;
+  font-size: 16px;
+  color: red;
+}
+#dados_paciente{
+  margin-top: 2%;
+}
+#erros{
+  margin-top: 2%;
+}
+#panel_titulo{
+  background: #fff;
+}
+#panel_resultado{
+  margin-top: 2%;
+  padding: 0.5%;
+}
+#panel_resultado h3{
+  text-align: center;
+}
+#btn_finalizar{
+  float: right;
+}

@@ -1,0 +1,64 @@
+{
+  "idade": [
+    {"valor": "0-5", "apresentar": "de 0 a 5 anos"},
+    {"valor": "6-14", "apresentar": "de 6 a 14 anos"},
+    {"valor": "15-49", "apresentar": "de 15 a 49 anos"},
+    {"valor": "50-99", "apresentar": "de 50 a 99 anos"}
+  ],
+  "sexo": [
+    {"valor": "masc", "apresentar": "Masculino"},
+    {"valor": "fem", "apresentar": "Feminino"}
+  ],
+  "febre_repentina": [
+    {"valor": "sim", "apresentar": "Sim"},
+    {"valor": "nao", "apresentar": "Não"}
+  ],
+  "febre": [
+    {"valor": "37-37.9", "apresentar": "entre 37° e 37.9°"},
+    {"valor": "38-40", "apresentar": "entre 38° e 40°"}
+  ],
+  "duracao_febre": [
+    {"valor": "0-2", "apresentar": "de 0 a 2 dias"},
+    {"valor": "2-3", "apresentar": "de 2 a 3 dias"},
+    {"valor": "2-7", "apresentar": "de 2 a 7 dias"}
+  ],
+  "dor_articulacao": [
+    {"valor": "leve", "apresentar": "Leve"},
+    {"valor": "moderada", "apresentar": "Moderada"},
+    {"valor": "intensa", "apresentar": "Intensa"}
+  ],
+  "inchaco_articulacao": [
+    {"valor": "sim", "apresentar": "Sim"},
+    {"valor": "nao", "apresentar": "Não"},
+    {"valor": "raro", "apresentar": "Raro"}
+  ],
+  "dor_de_cabeca": [
+    {"valor": "ausente", "apresentar": "Ausente"},
+    {"valor": "leve", "apresentar": "Leve"},
+    {"valor": "moderada", "apresentar": "Moderada"},
+    {"valor": "intensa", "apresentar": "Intensa"}
+  ],
+  "dor_muscular": [
+    {"valor": "ausente", "apresentar": "Ausente"},
+    {"valor": "moderada", "apresentar": "Moderada"},
+    {"valor": "intensa", "apresentar": "Intensa"}
+  ],
+  "coceira": [
+    {"valor": "ausente", "apresentar": "Ausente"},
+    {"valor": "leve", "apresentar": "Leve"},
+    {"valor": "moderada", "apresentar": "Moderada"},
+    {"valor": "intensa", "apresentar": "Intensa"}
+  ],
+  "manchas_vermelhas": [
+    {"valor": "sim", "apresentar": "Sim"},
+    {"valor": "nao", "apresentar": "Não"}
+  ],
+  "hipertrofia_ganglionar": [
+    {"valor": "sim", "apresentar": "Sim"},
+    {"valor": "nao", "apresentar": "Não"}
+  ],
+  "conjuntivite": [
+    {"valor": "sim", "apresentar": "Sim"},
+    {"valor": "nao", "apresentar": "Não"}
+  ]
+}

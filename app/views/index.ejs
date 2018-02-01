@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Dengue</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body class="body-index">
+    <div class="conteudo">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+					<div class="item active">
+						<strong class="texto"><%= slides.sintomas[0].descricao%></strong>
+					</div>
+					<% for(var i = 1; i < slides.sintomas.length; i++) {%>
+						<div class="item">
+              <strong class="texto"><%= slides.sintomas[i].descricao%></strong>
+            </div>
+					<% }%>
+        </div>
+        <!-- Carousel controls -->
+        <!--
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>-->
+    </div>
+
+		<% if(validacao.length > 0) { %>
+			<div class="alert alert-danger" id="erros" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>Atenção</strong>
+				<ul>
+				<% for(var i = 0; i < validacao.length; i++) {%>
+					<li><%= validacao[i].msg %></li>
+				<% } %>
+				</ul>
+			</div>
+		<% } %>
+
+		<% if(resultado.result != null) {%>
+			<div class="panel panel-default" id="panel_resultado">
+					<h3>
+						Diagnóstico Provável
+						<a href="/" class="btn btn-info" id="btn_finalizar">Finalizar</a>
+					</h3>
+					<hr>
+					<b>Nome do Paciente: <%= paciente %></b><br><br>
+					<b>
+						Com base nos dados e sintomas informados, obteve-se uma precisão de <span class="res"><%= resultado.prediction %></span> na classificação,
+						onde o resultado prediz que o paciente pode estar infectado com o vírus <span class="res"><%= resultado.result %></span>.<br>
+						Recomenda-se que o paciente realize mais exames para confirmação do diagnóstico.
+					</b>
+			</div>
+		<% }%>
+
+    <div class="panel panel-default" id="dados_paciente">
+      <div class="panel-heading" id="panel_titulo">
+				<img src="images/form.png" alt="Dados do paciente"><b class="info_paciente">Dados do Paciente</b>
+      </div>
+      <div class="panel-body">
+
+        <form action="/consultar" method="post">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="nome" class="form-control" name="nome" id="nome" placeholder="Nome">
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="idade">Idade</label>
+                <select class="form-control" name="idade">
+                  <option value="">Selecione...</option>
+                  <% for(var i = 0; i < informacoes.idade.length; i++) {%>
+                    <option value="<%= informacoes.idade[i].valor %>"><%= informacoes.idade[i].apresentar %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+
+						<div class="col-md-3">
+              <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <select class="form-control" name="sexo">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.sexo.length; i++) {%>
+                    <option value="<%= informacoes.sexo[i].valor %>"><%= informacoes.sexo[i].apresentar %></option>
+                  <% } %>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="febre_repentina">Febre Repentina</label>
+								<select class="form-control" name="febre_repentina">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.febre_repentina.length; i++) {%>
+                    <option value="<%= informacoes.febre_repentina[i].valor %>"><%= informacoes.febre_repentina[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="febre">Febre(em graus)</label>
+								<select class="form-control" name="febre">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.febre.length; i++) {%>
+                    <option value="<%= informacoes.febre[i].valor %>"><%= informacoes.febre[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="duracao_febre">Duração da Febre(em dias)</label>
+								<select class="form-control" name="duracao_febre">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.duracao_febre.length; i++) {%>
+                    <option value="<%= informacoes.duracao_febre[i].valor %>"><%= informacoes.duracao_febre[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="dor_articulacao">Dor nas Articulações</label>
+								<select class="form-control" name="dor_articulacao">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.dor_articulacao.length; i++) {%>
+                    <option value="<%= informacoes.dor_articulacao[i].valor %>"><%= informacoes.dor_articulacao[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="inchaco_articulacao">Inchaço nas Articulações</label>
+								<select class="form-control" name="inchaco_articulacao">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.inchaco_articulacao.length; i++) {%>
+                    <option value="<%= informacoes.inchaco_articulacao[i].valor %>"><%= informacoes.inchaco_articulacao[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="dor_de_cabeca">Dor de cabeça</label>
+								<select class="form-control" name="dor_de_cabeca">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.dor_de_cabeca.length; i++) {%>
+                    <option value="<%= informacoes.dor_de_cabeca[i].valor %>"><%= informacoes.dor_de_cabeca[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="dor_muscular">Dor Muscular</label>
+								<select class="form-control" name="dor_muscular">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.dor_muscular.length; i++) {%>
+                    <option value="<%= informacoes.dor_muscular[i].valor %>"><%= informacoes.dor_muscular[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="coceira">Coceira</label>
+								<select class="form-control" name="coceira">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.coceira.length; i++) {%>
+                    <option value="<%= informacoes.coceira[i].valor %>"><%= informacoes.coceira[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="manchas_vermelhas">Manchas Vermelhas</label>
+								<select class="form-control" name="manchas_vermelhas">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.manchas_vermelhas.length; i++) {%>
+                    <option value="<%= informacoes.manchas_vermelhas[i].valor %>"><%= informacoes.manchas_vermelhas[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="hipertrofia_ganglionar">Hipertrofia Ganglionar</label>
+								<select class="form-control" name="hipertrofia_ganglionar">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.hipertrofia_ganglionar.length; i++) {%>
+                    <option value="<%= informacoes.hipertrofia_ganglionar[i].valor %>"><%= informacoes.hipertrofia_ganglionar[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="conjuntivite">Conjuntivite</label>
+								<select class="form-control" name="conjuntivite">
+                  <option value="">Selecione...</option>
+									<% for(var i = 0; i < informacoes.conjuntivite.length; i++) {%>
+                    <option value="<%= informacoes.conjuntivite[i].valor %>"><%= informacoes.conjuntivite[i].apresentar %></option>
+                  <% } %>
+                </select>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+					<button type="submit" class="btn btn-primary">Consultar</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+	</body>
+</html>

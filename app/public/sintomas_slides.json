@@ -1,0 +1,13 @@
+{
+  "sintomas": [
+    { "descricao": "Febre"},
+    { "descricao": "Dor nas articulações"},
+    { "descricao": "Inchaço nas articulações"},
+    { "descricao": "Dor de cabeça"},
+    { "descricao": "Dor muscular"},
+    { "descricao": "Coceira na pele"},
+    { "descricao": "Manchas vermelhas"},
+    { "descricao": "Hipertrofia ganglionar"},
+    { "descricao": "Conjuntivite"}
+  ]
+}
